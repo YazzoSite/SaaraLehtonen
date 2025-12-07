@@ -11,9 +11,14 @@ import { ACTIVE_PALETTE } from '../styles/colorPalettes';
  * - Slightly transparent background with blur effect
  * - Fixed to top of page
  * - Click outside to close mobile menu
+ * - Optional name/logo display (hidden on homepage where name is in hero)
  */
 
-export const Navigation: React.FC = () => {
+interface NavigationProps {
+  showName?: boolean; // Whether to show "SAARA LEHTONEN" in header (default: true)
+}
+
+export const Navigation: React.FC<NavigationProps> = ({ showName = true }) => {
   const { isMobile } = useScreenSize();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const palette = ACTIVE_PALETTE;
@@ -53,7 +58,7 @@ export const Navigation: React.FC = () => {
 
   const navLinks = [
     { label: 'Etusivu', href: '#home' },
-    { label: 'Tietoa', href: '#tietoa' },
+    { label: 'Saara', href: '#tietoa' },
     { label: 'Galleria', href: '#galleria' },
     { label: 'Media', href: '#media' },
     { label: 'CV', href: '#cv' },
@@ -80,24 +85,26 @@ export const Navigation: React.FC = () => {
           margin: '0 auto',
           padding: isMobile ? '1rem 1.5rem' : '1rem 2rem',
           display: 'flex',
-          justifyContent: 'space-between',
+          justifyContent: showName ? 'space-between' : 'flex-end',
           alignItems: 'center'
         }}
       >
-        {/* Logo/Name */}
-        <a
-          href="#home"
-          style={{
-            color: '#FFFFFF',
-            textDecoration: 'none',
-            fontSize: isMobile ? '1rem' : '1.25rem',
-            fontWeight: 600,
-            letterSpacing: '0.05em',
-            textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
-          }}
-        >
-          SAARA LEHTONEN
-        </a>
+        {/* Logo/Name - Only show if showName is true */}
+        {showName && (
+          <a
+            href="#home"
+            style={{
+              color: '#FFFFFF',
+              textDecoration: 'none',
+              fontSize: isMobile ? '1rem' : '1.25rem',
+              fontWeight: 600,
+              letterSpacing: '0.05em',
+              textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
+            }}
+          >
+            SAARA LEHTONEN
+          </a>
+        )}
 
         {/* Desktop Navigation */}
         {!isMobile && (

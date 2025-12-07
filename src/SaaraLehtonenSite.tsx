@@ -1,19 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { HomePage } from './pages/HomePage';
+import { GalleryPage } from './pages/GalleryPage';
+import { AboutPage } from './pages/AboutPage';
+import { MediaPage } from './pages/MediaPage';
+import { CVPage } from './pages/CVPage';
+import { ContactPage } from './pages/ContactPage';
 
 /**
  * Main site component for Saara Lehtonen
  *
- * This is the entry point for the site.
- * Currently showing HomePage only - will add routing later for other pages.
+ * Simple hash-based routing:
+ * - #home or / -> HomePage
+ * - #galleria -> GalleryPage
+ * - #tietoa -> AboutPage
+ * - #media -> MediaPage
+ * - #cv -> CVPage
+ * - #yhteystiedot -> ContactPage
  */
 
 export const SaaraLehtonenSite: React.FC = () => {
-  return (
-    <div>
-      <HomePage />
-    </div>
-  );
+  const [currentPage, setCurrentPage] = useState<string>('home');
+
+  useEffect(() => {
+    // Get initial page from hash
+    const hash = window.location.hash.replace('#', '') || 'home';
+    setCurrentPage(hash);
+
+    // Listen for hash changes
+    const handleHashChange = () => {
+      const newHash = window.location.hash.replace('#', '') || 'home';
+      setCurrentPage(newHash);
+      // Scroll to top when page changes
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
+  // Render the appropriate page
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'galleria':
+        return <GalleryPage />;
+      case 'tietoa':
+        return <AboutPage />;
+      case 'media':
+        return <MediaPage />;
+      case 'cv':
+        return <CVPage />;
+      case 'yhteystiedot':
+        return <ContactPage />;
+      case 'home':
+      default:
+        return <HomePage />;
+    }
+  };
+
+  return <div>{renderPage()}</div>;
 };
 
 export default SaaraLehtonenSite;

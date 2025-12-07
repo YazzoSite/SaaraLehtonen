@@ -1,0 +1,11 @@
+# robots.txt for Saara Lehtonen Portfolio
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://saaralehtonen.com/sitemap.xml
+
+# Disallow admin/CMS area (when implemented)
+Disallow: /admin/

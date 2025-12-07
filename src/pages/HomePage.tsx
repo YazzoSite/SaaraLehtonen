@@ -20,8 +20,8 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      {/* Navigation Header */}
-      <Navigation />
+      {/* Navigation Header - Hide name since it's in the hero */}
+      <Navigation showName={false} />
 
       {/* Hero Section */}
       <div
@@ -96,7 +96,7 @@ export const HomePage: React.FC = () => {
             opacity: 0.95
           }}
         >
-          Näyttelijä • Dubbaaja • Spiikkeri
+          Näyttelijä • Laulaja • Ääninäyttelijä
         </p>
 
         {/* Bio Text */}
@@ -111,13 +111,12 @@ export const HomePage: React.FC = () => {
           }}
         >
           <p style={{ margin: '0 0 1.5rem 0', opacity: 0.95 }}>
-            Olen Helsingissä työskentelevä näyttelijä, jonka intohimona on
+            Olen Helsingissä asuva näyttelijä, jonka intohimona on
             tuoda hahmot eloon niin näyttämöllä, ruudulla kuin mikrofoninkin
-            äänessä.
+            ääressä.
           </p>
           <p style={{ margin: 0, opacity: 0.95 }}>
-            Kokemukseni kattaa teatterin, television, elokuvan sekä
-            ääninäyttelemisen kautta mainosspiikeistä dubbaukseen.
+            Tähän mahtuisi toinen lyhyt virke, joka kertoo lisää minusta.
           </p>
         </div>
 
