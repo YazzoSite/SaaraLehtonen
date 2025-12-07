@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ACTIVE_PALETTE } from '../styles/colorPalettes';
 import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
+import { useContentData } from '../hooks/useContentData';
 
 /**
  * GalleryPage for Saara Lehtonen
@@ -21,73 +22,36 @@ interface GalleryImage {
   category: 'Headshots' | 'Production' | 'Promotional';
 }
 
+interface GalleryContent {
+  introText: string;
+  images: GalleryImage[];
+}
+
 export const GalleryPage: React.FC = () => {
   const palette = ACTIVE_PALETTE;
   const { isMobile, isTablet } = useScreenSize();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const data = useContentData<GalleryContent>('gallery.json');
 
-  // Gallery images
-  const images: GalleryImage[] = [
-    // Jonna Härkänen photos
-    {
-      src: '/images/web/IMG_8559.jpg',
-      downloadSrc: '/images/downloads/IMG_8559.jpg',
-      alt: 'Saara Lehtonen professional headshot',
-      photographer: 'Jonna Härkänen',
-      category: 'Headshots'
-    },
-    {
-      src: '/images/web/IMG_8410.jpg',
-      downloadSrc: '/images/downloads/IMG_8410.jpg',
-      alt: 'Saara Lehtonen portrait',
-      photographer: 'Jonna Härkänen',
-      category: 'Headshots'
-    },
-    {
-      src: '/images/web/IMG_8484.jpg',
-      downloadSrc: '/images/downloads/IMG_8484.jpg',
-      alt: 'Saara Lehtonen portrait',
-      photographer: 'Jonna Härkänen',
-      category: 'Headshots'
-    },
-    {
-      src: '/images/web/IMG_8694.jpg',
-      downloadSrc: '/images/downloads/IMG_8694.jpg',
-      alt: 'Saara Lehtonen portrait',
-      photographer: 'Jonna Härkänen',
-      category: 'Headshots'
-    },
-    // Henni Hyvärinen photos
-    {
-      src: '/images/web/SaaraLehtonen2025©hennihyvarinen-2E1A5287fullsize.jpg',
-      downloadSrc: '/images/downloads/SaaraLehtonen2025©hennihyvarinen-2E1A5287fullsize.jpg',
-      alt: 'Saara Lehtonen professional photo',
-      photographer: 'Henni Hyvärinen',
-      category: 'Promotional'
-    },
-    {
-      src: '/images/web/SaaraLehtonen2025©hennihyvarinen-2E1A5086fullsize.jpg',
-      downloadSrc: '/images/downloads/SaaraLehtonen2025©hennihyvarinen-2E1A5086fullsize.jpg',
-      alt: 'Saara Lehtonen professional photo',
-      photographer: 'Henni Hyvärinen',
-      category: 'Promotional'
-    },
-    {
-      src: '/images/web/SaaraLehtonen2025©hennihyvarinen-2E1A5260fullsize.jpg',
-      downloadSrc: '/images/downloads/SaaraLehtonen2025©hennihyvarinen-2E1A5260fullsize.jpg',
-      alt: 'Saara Lehtonen professional photo',
-      photographer: 'Henni Hyvärinen',
-      category: 'Promotional'
-    },
-    {
-      src: '/images/web/SaaraLehtonen2025©hennihyvarinen-2E1A5386fullsize.jpg',
-      downloadSrc: '/images/downloads/SaaraLehtonen2025©hennihyvarinen-2E1A5386fullsize.jpg',
-      alt: 'Saara Lehtonen professional photo',
-      photographer: 'Henni Hyvärinen',
-      category: 'Promotional'
-    }
-  ];
+  if (!data) {
+    return (
+      <>
+        <Navigation />
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          color: '#FFFFFF'
+        }}>
+          Loading...
+        </div>
+      </>
+    );
+  }
+
+  const images = data.images;
 
   const openLightbox = (image: GalleryImage) => {
     setSelectedImage(image);
@@ -203,7 +167,7 @@ export const GalleryPage: React.FC = () => {
               opacity: 1
             }}
           >
-            Korkearesoluutioiset kuvat mediakäyttöön. Klikkaa kuvaa.
+            {data.introText}
           </p>
         </div>
 

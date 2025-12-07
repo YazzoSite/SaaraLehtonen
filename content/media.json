@@ -1,0 +1,39 @@
+{
+  "sections": [
+    {
+      "type": "commercials",
+      "title": "Mainokset",
+      "videos": [
+        {
+          "type": "youtube",
+          "url": "https://www.youtube.com/embed/EjO6EcuqlAM",
+          "title": "Elovena mainos",
+          "description": ""
+        }
+      ],
+      "externalLinks": []
+    },
+    {
+      "type": "voice-samples",
+      "title": "Ääninäytteet",
+      "videos": [],
+      "externalLinks": [
+        {
+          "url": "https://vild.fi/spiikkerihaku?query=Saara+Lehtonen",
+          "buttonText": "Kuuntele ääninäytteet Vild.fi"
+        }
+      ]
+    },
+    {
+      "type": "tv-appearances",
+      "title": "TV-esiintymiset",
+      "videos": [],
+      "externalLinks": [
+        {
+          "url": "https://www.ruutu.fi/video/2932661",
+          "buttonText": "Voice of Finland 2017"
+        }
+      ]
+    }
+  ]
+}

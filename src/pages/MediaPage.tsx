@@ -1,14 +1,56 @@
 import React from 'react';
 import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
+import { useContentData } from '../hooks/useContentData';
+
+interface MediaVideo {
+  type: 'youtube' | 'vimeo' | 'direct';
+  url: string;
+  title: string;
+  description?: string;
+}
+
+interface MediaExternalLink {
+  url: string;
+  buttonText: string;
+}
+
+interface MediaSection {
+  type: string;
+  title: string;
+  videos?: MediaVideo[];
+  externalLinks?: MediaExternalLink[];
+}
+
+interface MediaContent {
+  sections: MediaSection[];
+}
 
 /**
  * MediaPage for Saara Lehtonen
- * Placeholder page - content to be added
+ * Dynamic sections - only shows sections with content
  */
 
 export const MediaPage: React.FC = () => {
   const { isMobile } = useScreenSize();
+  const data = useContentData<MediaContent>('media.json');
+
+  if (!data) {
+    return (
+      <>
+        <Navigation />
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          color: '#FFFFFF'
+        }}>
+          Loading...
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -86,148 +128,112 @@ export const MediaPage: React.FC = () => {
               padding: isMobile ? '0 1rem' : '0 2rem'
             }}
           >
-            {/* Commercial Work Section */}
-            <div style={{ marginBottom: '4rem' }}>
-              <h2
-                style={{
-                  fontSize: '1.8rem',
-                  fontWeight: 600,
-                  color: '#FFFFFF',
-                  marginBottom: '1.5rem',
-                  textAlign: 'center'
-                }}
-              >
-                Mainokset
-              </h2>
-              {/* Elovena YouTube Video */}
-              <div
-                style={{
-                  position: 'relative',
-                  paddingBottom: '56.25%',
-                  height: 0,
-                  overflow: 'hidden',
-                  borderRadius: '8px',
-                  boxShadow: '0 8px 24px rgba(0,0,0,0.3)'
-                }}
-              >
-                <iframe
-                  src="https://www.youtube.com/embed/EjO6EcuqlAM"
-                  title="Elovena mainos"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    border: 'none'
-                  }}
-                />
-              </div>
-              <p
-                style={{
-                  color: '#FFFFFF',
-                  textAlign: 'center',
-                  marginTop: '1rem',
-                  opacity: 0.9
-                }}
-              >
-                Elovena mainos
-              </p>
-            </div>
+            {/* Dynamic Sections */}
+            {data.sections.map((section, sectionIndex) => {
+              // Skip sections with no content
+              const hasVideos = section.videos && section.videos.length > 0;
+              const hasLinks = section.externalLinks && section.externalLinks.length > 0;
 
-            {/* Voice Samples Section */}
-            <div style={{ marginBottom: '4rem' }}>
-              <h2
-                style={{
-                  fontSize: '1.8rem',
-                  fontWeight: 600,
-                  color: '#FFFFFF',
-                  marginBottom: '1.5rem',
-                  textAlign: 'center'
-                }}
-              >
-                Ääninäytteet
-              </h2>
-              <div style={{ textAlign: 'center' }}>
-                <a
-                  href="https://vild.fi/spiikkerihaku?query=Saara+Lehtonen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-block',
-                    padding: '1rem 2.5rem',
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    color: '#1a1a1a',
-                    textDecoration: 'none',
-                    borderRadius: '8px',
-                    fontSize: '1.1rem',
-                    fontWeight: 600,
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#FFFFFF';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.4)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
-                  }}
-                >
-                  Kuuntele ääninäytteet Vild.fi
-                </a>
-              </div>
-            </div>
+              if (!hasVideos && !hasLinks) {
+                return null;
+              }
 
-            {/* TV Appearances Section */}
-            <div style={{ marginBottom: '4rem' }}>
-              <h2
-                style={{
-                  fontSize: '1.8rem',
-                  fontWeight: 600,
-                  color: '#FFFFFF',
-                  marginBottom: '1.5rem',
-                  textAlign: 'center'
-                }}
-              >
-                TV-esiintymiset
-              </h2>
-              <div style={{ textAlign: 'center' }}>
-                <a
-                  href="https://www.ruutu.fi/video/2932661"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-block',
-                    padding: '1rem 2.5rem',
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    color: '#1a1a1a',
-                    textDecoration: 'none',
-                    borderRadius: '8px',
-                    fontSize: '1.1rem',
-                    fontWeight: 600,
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#FFFFFF';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.4)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
-                  }}
-                >
-                  Voice of Finland 2017
-                </a>
-              </div>
-            </div>
+              return (
+                <div key={sectionIndex} style={{ marginBottom: '4rem' }}>
+                  <h2
+                    style={{
+                      fontSize: '1.8rem',
+                      fontWeight: 600,
+                      color: '#FFFFFF',
+                      marginBottom: '1.5rem',
+                      textAlign: 'center'
+                    }}
+                  >
+                    {section.title}
+                  </h2>
+
+                  {/* Render Videos */}
+                  {hasVideos && section.videos!.map((video, videoIndex) => (
+                    <div key={videoIndex} style={{ marginBottom: '2rem' }}>
+                      <div
+                        style={{
+                          position: 'relative',
+                          paddingBottom: '56.25%',
+                          height: 0,
+                          overflow: 'hidden',
+                          borderRadius: '8px',
+                          boxShadow: '0 8px 24px rgba(0,0,0,0.3)'
+                        }}
+                      >
+                        <iframe
+                          src={video.url}
+                          title={video.title}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            border: 'none'
+                          }}
+                        />
+                      </div>
+                      <p
+                        style={{
+                          color: '#FFFFFF',
+                          textAlign: 'center',
+                          marginTop: '1rem',
+                          opacity: 0.9
+                        }}
+                      >
+                        {video.title}
+                      </p>
+                    </div>
+                  ))}
+
+                  {/* Render External Links */}
+                  {hasLinks && (
+                    <div style={{ textAlign: 'center' }}>
+                      {section.externalLinks!.map((link, linkIndex) => (
+                        <a
+                          key={linkIndex}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: 'inline-block',
+                            padding: '1rem 2.5rem',
+                            margin: '0.5rem',
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                            color: '#1a1a1a',
+                            textDecoration: 'none',
+                            borderRadius: '8px',
+                            fontSize: '1.1rem',
+                            fontWeight: 600,
+                            transition: 'all 0.3s ease',
+                            boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#FFFFFF';
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                            e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.4)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+                          }}
+                        >
+                          {link.buttonText}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -1,14 +1,44 @@
 import React from 'react';
 import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
+import { useContentData } from '../hooks/useContentData';
+
+interface CVSection {
+  title: string;
+  content: string;
+}
+
+interface CVContent {
+  sections: CVSection[];
+  cvFile: string;
+  downloadButtonText: string;
+}
 
 /**
  * CVPage for Saara Lehtonen
- * Placeholder page - content to be added
+ * Dynamic CV sections managed by CMS
  */
 
 export const CVPage: React.FC = () => {
   const { isMobile } = useScreenSize();
+  const data = useContentData<CVContent>('cv.json');
+
+  if (!data) {
+    return (
+      <>
+        <Navigation />
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          color: '#FFFFFF'
+        }}>
+          Loading...
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -89,7 +119,7 @@ export const CVPage: React.FC = () => {
           >
             {/* Download Button */}
             <a
-              href="/cv.txt"
+              href={data.cvFile}
               download
               style={{
                 display: 'inline-block',
@@ -115,10 +145,10 @@ export const CVPage: React.FC = () => {
                 e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
               }}
             >
-              ⬇ Lataa CV
+              {data.downloadButtonText}
             </a>
 
-            {/* Lorem Ipsum Content */}
+            {/* CV Sections */}
             <div
               style={{
                 textAlign: 'left',
@@ -126,33 +156,16 @@ export const CVPage: React.FC = () => {
                 lineHeight: '1.8'
               }}
             >
-              <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600 }}>
-                Koulutus
-              </h2>
-              <p style={{ marginBottom: '2rem', opacity: 0.9 }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-
-              <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600 }}>
-                Työkokemus
-              </h2>
-              <p style={{ marginBottom: '2rem', opacity: 0.9 }}>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
-              </p>
-
-              <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600 }}>
-                Taidot
-              </h2>
-              <p style={{ marginBottom: '2rem', opacity: 0.9 }}>
-                Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-              </p>
-
-              <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600 }}>
-                Saavutukset
-              </h2>
-              <p style={{ marginBottom: '2rem', opacity: 0.9 }}>
-                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
-              </p>
+              {data.sections.map((section, index) => (
+                <div key={index}>
+                  <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600 }}>
+                    {section.title}
+                  </h2>
+                  <p style={{ marginBottom: '2rem', opacity: 0.9 }}>
+                    {section.content}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -1,0 +1,35 @@
+{
+  "email": "saara@saaralehtonen.com",
+  "socialMedia": [
+    {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/lehtonensaara/"
+    },
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/lehtonensaara/"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/channel/UC35YTBmG7axNB5g9hO9bSiw"
+    }
+  ],
+  "relatedLinks": [
+    {
+      "url": "https://www.wasateater.fi",
+      "text": "www.wasateater.fi"
+    },
+    {
+      "url": "https://www.viikinsaarenkesateatteri.fi",
+      "text": "www.viikinsaarenkesateatteri.fi"
+    },
+    {
+      "url": "https://www.nayttelijaliitto.fi",
+      "text": "www.nayttelijaliitto.fi"
+    },
+    {
+      "url": "https://www.helsinginfreet.com",
+      "text": "www.helsinginfreet.com"
+    }
+  ]
+}

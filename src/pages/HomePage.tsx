@@ -2,6 +2,20 @@ import React from 'react';
 import { ACTIVE_PALETTE } from '../styles/colorPalettes';
 import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
+import { useContentData } from '../hooks/useContentData';
+
+interface HomeContent {
+  name: string;
+  subtitle: string;
+  heroParagraph1: string;
+  heroParagraph2: string;
+  showButton1: boolean;
+  ctaButton1Text: string;
+  ctaButton1Link: string;
+  showButton2: boolean;
+  ctaButton2Text: string;
+  ctaButton2Link: string;
+}
 
 /**
  * HomePage for Saara Lehtonen
@@ -17,6 +31,24 @@ import { useScreenSize } from '../hooks/useScreenSize';
 export const HomePage: React.FC = () => {
   const palette = ACTIVE_PALETTE;
   const { isMobile, isTablet } = useScreenSize();
+  const data = useContentData<HomeContent>('home.json');
+
+  if (!data) {
+    return (
+      <>
+        <Navigation showName={false} />
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          color: '#FFFFFF'
+        }}>
+          Loading...
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -82,7 +114,7 @@ export const HomePage: React.FC = () => {
             fontFamily: '"Helvetica Neue", Arial, sans-serif'
           }}
         >
-          SAARA LEHTONEN
+          {data.name}
         </h1>
 
         {/* Subtitle */}
@@ -96,7 +128,7 @@ export const HomePage: React.FC = () => {
             opacity: 0.95
           }}
         >
-          Näyttelijä • Laulaja • Ääninäyttelijä
+          {data.subtitle}
         </p>
 
         {/* Bio Text */}
@@ -111,12 +143,10 @@ export const HomePage: React.FC = () => {
           }}
         >
           <p style={{ margin: '0 0 1.5rem 0', opacity: 0.95 }}>
-            Olen Helsingissä asuva näyttelijä, jonka intohimona on
-            tuoda hahmot eloon niin näyttämöllä, ruudulla kuin mikrofoninkin
-            ääressä.
+            {data.heroParagraph1}
           </p>
           <p style={{ margin: 0, opacity: 0.95 }}>
-            Tähän mahtuisi toinen lyhyt virke, joka kertoo lisää minusta.
+            {data.heroParagraph2}
           </p>
         </div>
 
@@ -129,66 +159,70 @@ export const HomePage: React.FC = () => {
             flexWrap: 'wrap'
           }}
         >
-          <a
-            href="#galleria"
-            style={{
-              display: 'inline-block',
-              padding: '0.875rem 2.5rem',
-              backgroundColor: 'rgba(255, 255, 255, 0.95)',
-              color: palette.colors.textPrimary,
-              textDecoration: 'none',
-              borderRadius: '4px',
-              fontSize: '1rem',
-              fontWeight: 600,
-              transition: 'all 0.3s ease',
-              border: 'none',
-              cursor: 'pointer',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#FFFFFF';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
-            }}
-          >
-            Katso galleria
-          </a>
-          <a
-            href="#media"
-            style={{
-              display: 'inline-block',
-              padding: '0.875rem 2.5rem',
-              backgroundColor: 'transparent',
-              color: '#FFFFFF',
-              textDecoration: 'none',
-              borderRadius: '4px',
-              fontSize: '1rem',
-              fontWeight: 600,
-              transition: 'all 0.3s ease',
-              border: '2px solid rgba(255, 255, 255, 0.9)',
-              cursor: 'pointer',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
-              e.currentTarget.style.borderColor = '#FFFFFF';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.3)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.9)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
-            }}
-          >
-            Showreel & Media
-          </a>
+          {data.showButton1 && (
+            <a
+              href={data.ctaButton1Link}
+              style={{
+                display: 'inline-block',
+                padding: '0.875rem 2.5rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                color: palette.colors.textPrimary,
+                textDecoration: 'none',
+                borderRadius: '4px',
+                fontSize: '1rem',
+                fontWeight: 600,
+                transition: 'all 0.3s ease',
+                border: 'none',
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#FFFFFF';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+              }}
+            >
+              {data.ctaButton1Text}
+            </a>
+          )}
+          {data.showButton2 && (
+            <a
+              href={data.ctaButton2Link}
+              style={{
+                display: 'inline-block',
+                padding: '0.875rem 2.5rem',
+                backgroundColor: 'transparent',
+                color: '#FFFFFF',
+                textDecoration: 'none',
+                borderRadius: '4px',
+                fontSize: '1rem',
+                fontWeight: 600,
+                transition: 'all 0.3s ease',
+                border: '2px solid rgba(255, 255, 255, 0.9)',
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+                e.currentTarget.style.borderColor = '#FFFFFF';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.9)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+              }}
+            >
+              {data.ctaButton2Text}
+            </a>
+          )}
         </div>
       </div>
     </div>

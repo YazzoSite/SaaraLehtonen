@@ -2,6 +2,12 @@ import React from 'react';
 import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { ACTIVE_PALETTE } from '../styles/colorPalettes';
+import { useContentData } from '../hooks/useContentData';
+
+interface AboutContent {
+  title: string;
+  bioParagraphs: string[];
+}
 
 /**
  * AboutPage for Saara Lehtonen
@@ -11,6 +17,24 @@ import { ACTIVE_PALETTE } from '../styles/colorPalettes';
 export const AboutPage: React.FC = () => {
   const { isMobile } = useScreenSize();
   const palette = ACTIVE_PALETTE;
+  const data = useContentData<AboutContent>('about.json');
+
+  if (!data) {
+    return (
+      <>
+        <Navigation />
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          color: '#FFFFFF'
+        }}>
+          Loading...
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -76,7 +100,7 @@ export const AboutPage: React.FC = () => {
                 textShadow: '2px 4px 8px rgba(0,0,0,0.6)'
               }}
             >
-              Saara Lehtonen
+              {data.title}
             </h1>
           </div>
 
@@ -98,49 +122,19 @@ export const AboutPage: React.FC = () => {
                 border: `2px solid ${palette.colors.borderColor}`
               }}
             >
-              <p
-                style={{
-                  fontSize: '1.1rem',
-                  lineHeight: '1.8',
-                  color: palette.colors.textPrimary,
-                  margin: '0 0 1.5rem 0'
-                }}
-              >
-                Saara Lehtonen on näyttelijä, laulaja ja ääninäyttelijä. Helsingissä asuva freelancer on yli kymmenen vuoden ajan työskennellyt näyttelijänä ja musikaaliartistina ammattiteattereissa ympäri Suomen.
-              </p>
-
-              <p
-                style={{
-                  fontSize: '1.1rem',
-                  lineHeight: '1.8',
-                  color: palette.colors.textPrimary,
-                  margin: '0 0 1.5rem 0'
-                }}
-              >
-                Tärkeimmiksi rooleikseen Saara mainitsee Époninen Les Misérables - musikaalissa (Tampereen Teatteri 2013), Georgie Bukatinskyn Housut Pois - musikaalissa (Samppalinnan kesäteatteri 2012) sekä Lindan Veriveljissä (Tampereen Teatteri 2012).
-              </p>
-
-              <p
-                style={{
-                  fontSize: '1.1rem',
-                  lineHeight: '1.8',
-                  color: palette.colors.textPrimary,
-                  margin: '0 0 1.5rem 0'
-                }}
-              >
-                Teatteritöiden lisäksi Saara on dubannut lasten sarjoja ja elokuvia vuodesta 2004 alkaen. Saara on antanut äänen muiden muassa My Little Ponyn Pinkie Pielle, Seikkailija Doralle, Ryhmä Haun Haltille sekä Monster High'n Toralielle.
-              </p>
-
-              <p
-                style={{
-                  fontSize: '1.1rem',
-                  lineHeight: '1.8',
-                  color: palette.colors.textPrimary,
-                  margin: 0
-                }}
-              >
-                Saara kuuluu myös lauluryhmä Polte Ensembleen. Polte Ensemble perustettiin vuonna 2015 ja siihen kuuluvat Saaran lisäksi Hanna Kaila, Laura Virtala sekä Jukka Nylund. Kaikki yhtyeen jäsenet ovat tehneet jo pitkään uraa musikaaliartisteina.
-              </p>
+              {data.bioParagraphs.map((paragraph, index) => (
+                <p
+                  key={index}
+                  style={{
+                    fontSize: '1.1rem',
+                    lineHeight: '1.8',
+                    color: palette.colors.textPrimary,
+                    margin: index === data.bioParagraphs.length - 1 ? 0 : '0 0 1.5rem 0'
+                  }}
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
         </div>

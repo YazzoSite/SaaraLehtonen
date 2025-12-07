@@ -1,0 +1,135 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Enable local development mode (reads/writes actual files)
+local_backend: true
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      # HomePage
+      - label: "Home Page"
+        name: "home"
+        file: "content/home.json"
+        fields:
+          - {label: "Name", name: "name", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Hero Paragraph 1", name: "heroParagraph1", widget: "text"}
+          - {label: "Hero Paragraph 2", name: "heroParagraph2", widget: "text"}
+          - {label: "Show Button 1", name: "showButton1", widget: "boolean", default: true}
+          - {label: "Button 1 Text", name: "ctaButton1Text", widget: "string", default: "Katso galleria"}
+          - label: "Button 1 Link"
+            name: "ctaButton1Link"
+            widget: "select"
+            default: "#galleria"
+            options:
+              - { label: "Gallery", value: "#galleria" }
+              - { label: "Media", value: "#media" }
+              - { label: "CV", value: "#cv" }
+              - { label: "About", value: "#saara" }
+              - { label: "Contact", value: "#yhteystiedot" }
+          - {label: "Show Button 2", name: "showButton2", widget: "boolean", default: true}
+          - {label: "Button 2 Text", name: "ctaButton2Text", widget: "string", default: "Showreel & Media"}
+          - label: "Button 2 Link"
+            name: "ctaButton2Link"
+            widget: "select"
+            default: "#media"
+            options:
+              - { label: "Gallery", value: "#galleria" }
+              - { label: "Media", value: "#media" }
+              - { label: "CV", value: "#cv" }
+              - { label: "About", value: "#saara" }
+              - { label: "Contact", value: "#yhteystiedot" }
+
+      # AboutPage
+      - label: "About Page"
+        name: "about"
+        file: "content/about.json"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - label: "Bio Paragraphs"
+            name: "bioParagraphs"
+            widget: "list"
+            field: {label: "Paragraph", name: "paragraph", widget: "text"}
+
+      # GalleryPage
+      - label: "Gallery"
+        name: "gallery"
+        file: "content/gallery.json"
+        fields:
+          - {label: "Intro Text", name: "introText", widget: "text"}
+          - label: "Images"
+            name: "images"
+            widget: "list"
+            fields:
+              - {label: "Image (Web)", name: "src", widget: "image"}
+              - {label: "High-Res Image", name: "downloadSrc", widget: "image"}
+              - {label: "Alt Text", name: "alt", widget: "string"}
+              - {label: "Photographer", name: "photographer", widget: "string"}
+              - {label: "Category", name: "category", widget: "select", options: ["Headshots", "Production", "Promotional"]}
+
+      # MediaPage
+      - label: "Media Page"
+        name: "media"
+        file: "content/media.json"
+        fields:
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - {label: "Section Type", name: "type", widget: "string", hint: "e.g. commercials, showreel, voice-samples, tv-appearances"}
+              - {label: "Section Title", name: "title", widget: "string"}
+              - label: "Videos"
+                name: "videos"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Video Type", name: "type", widget: "select", options: ["youtube", "vimeo", "direct"]}
+                  - {label: "Video URL", name: "url", widget: "string"}
+                  - {label: "Title/Caption", name: "title", widget: "string"}
+                  - {label: "Description", name: "description", widget: "text", required: false}
+              - label: "External Links"
+                name: "externalLinks"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "URL", name: "url", widget: "string"}
+                  - {label: "Button Text", name: "buttonText", widget: "string"}
+
+      # CVPage
+      - label: "CV Page"
+        name: "cv"
+        file: "content/cv.json"
+        fields:
+          - label: "CV Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - {label: "Section Title", name: "title", widget: "string"}
+              - {label: "Content", name: "content", widget: "markdown"}
+          - {label: "CV File", name: "cvFile", widget: "file"}
+          - {label: "Download Button Text", name: "downloadButtonText", widget: "string"}
+
+      # ContactPage
+      - label: "Contact Page"
+        name: "contact"
+        file: "content/contact.json"
+        fields:
+          - {label: "Email", name: "email", widget: "string"}
+          - label: "Social Media"
+            name: "socialMedia"
+            widget: "list"
+            fields:
+              - {label: "Platform", name: "platform", widget: "select", options: ["facebook", "instagram", "youtube", "twitter", "linkedin"]}
+              - {label: "URL", name: "url", widget: "string"}
+          - label: "Related Links"
+            name: "relatedLinks"
+            widget: "list"
+            fields:
+              - {label: "URL", name: "url", widget: "string"}
+              - {label: "Display Text", name: "text", widget: "string"}
