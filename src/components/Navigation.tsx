@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useScreenSize } from '../hooks/useScreenSize';
-import { ACTIVE_PALETTE } from '../styles/colorPalettes';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useTranslations } from '../hooks/useTranslations';
 
@@ -23,7 +22,6 @@ interface NavigationProps {
 export const Navigation: React.FC<NavigationProps> = ({ showName = true }) => {
   const { isMobile } = useScreenSize();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const palette = ACTIVE_PALETTE;
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const t = useTranslations();
