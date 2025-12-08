@@ -77,7 +77,7 @@ export const HomePage: React.FC = () => {
           inset: 0,
           backgroundImage: 'url(/assets/hero-bg.jpg)',
           backgroundSize: 'cover',
-          backgroundPosition: isMobile ? 'center 85%' : 'center 42%',
+          backgroundPosition: 'center 85%',  // Testing: same value for all devices
           filter: 'brightness(0.8)'
         }}
       />
