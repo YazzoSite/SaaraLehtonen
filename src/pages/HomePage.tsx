@@ -77,7 +77,7 @@ export const HomePage: React.FC = () => {
           inset: 0,
           backgroundImage: 'url(/assets/hero-bg.jpg)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center 42%', // Slight adjustment to avoid header overlap
+          backgroundPosition: isMobile ? 'center 30%' : 'center 42%',
           filter: 'brightness(0.8)'
         }}
       />
@@ -94,7 +94,7 @@ export const HomePage: React.FC = () => {
       {/* Content Container - All content overlaid */}
       <div
         style={{
-          marginTop: isMobile ? '55vh' : isTablet ? '6rem' : '8rem',
+          marginTop: isMobile ? '45vh' : isTablet ? '6rem' : '8rem',
           position: 'relative',
           zIndex: 10,
           textAlign: 'center',
