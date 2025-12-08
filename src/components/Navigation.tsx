@@ -216,10 +216,10 @@ export const Navigation: React.FC<NavigationProps> = ({ showName = true }) => {
             maxWidth: '200px',
             width: 'auto',
             minWidth: '180px',
-            backgroundColor: palette.colors.accentPrimary, // Fully opaque for better readability
+            backgroundColor: '#8E9A98', // Gray-green from Sapphire Ash Morning palette
             borderRadius: '8px',
             boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
-            border: `1px solid ${palette.colors.borderColor}`,
+            border: '1px solid rgba(255, 255, 255, 0.2)',
             marginTop: '0.5rem',
             overflow: 'hidden',
             zIndex: 100

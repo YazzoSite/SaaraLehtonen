@@ -16,7 +16,7 @@ collections:
       # HomePage - Finnish
       - label: "Home Page"
         name: "home-fi"
-        file: "content/home-fi.json"
+        file: "public/content/home-fi.json"
         fields:
           - {label: "Name", name: "name", widget: "string"}
           - {label: "Subtitle", name: "subtitle", widget: "string"}
@@ -50,7 +50,7 @@ collections:
       # AboutPage - Finnish
       - label: "About Page"
         name: "about-fi"
-        file: "content/about-fi.json"
+        file: "public/content/about-fi.json"
         fields:
           - {label: "Title", name: "title", widget: "string"}
           - label: "Bio Paragraphs"
@@ -61,7 +61,7 @@ collections:
       # GalleryPage - Finnish
       - label: "Gallery"
         name: "gallery-fi"
-        file: "content/gallery-fi.json"
+        file: "public/content/gallery-fi.json"
         fields:
           - {label: "Intro Text", name: "introText", widget: "text"}
           - label: "Images"
@@ -77,7 +77,7 @@ collections:
       # MediaPage - Finnish
       - label: "Media Page"
         name: "media-fi"
-        file: "content/media-fi.json"
+        file: "public/content/media-fi.json"
         fields:
           - label: "Sections"
             name: "sections"
@@ -105,7 +105,7 @@ collections:
       # CVPage - Finnish
       - label: "CV Page"
         name: "cv-fi"
-        file: "content/cv-fi.json"
+        file: "public/content/cv-fi.json"
         fields:
           - label: "CV Sections"
             name: "sections"
@@ -120,7 +120,7 @@ collections:
       # ContactPage - Finnish
       - label: "Contact Page"
         name: "contact-fi"
-        file: "content/contact-fi.json"
+        file: "public/content/contact-fi.json"
         fields:
           - {label: "Email", name: "email", widget: "string"}
           - label: "Social Media"
@@ -143,7 +143,7 @@ collections:
       # HomePage - English
       - label: "Home Page"
         name: "home-en"
-        file: "content/home-en.json"
+        file: "public/content/home-en.json"
         fields:
           - {label: "Name", name: "name", widget: "string"}
           - {label: "Subtitle", name: "subtitle", widget: "string"}
@@ -177,7 +177,7 @@ collections:
       # AboutPage - English
       - label: "About Page"
         name: "about-en"
-        file: "content/about-en.json"
+        file: "public/content/about-en.json"
         fields:
           - {label: "Title", name: "title", widget: "string"}
           - label: "Bio Paragraphs"
@@ -188,7 +188,7 @@ collections:
       # GalleryPage - English
       - label: "Gallery"
         name: "gallery-en"
-        file: "content/gallery-en.json"
+        file: "public/content/gallery-en.json"
         fields:
           - {label: "Intro Text", name: "introText", widget: "text"}
           - label: "Images"
@@ -204,7 +204,7 @@ collections:
       # MediaPage - English
       - label: "Media Page"
         name: "media-en"
-        file: "content/media-en.json"
+        file: "public/content/media-en.json"
         fields:
           - label: "Sections"
             name: "sections"
@@ -232,7 +232,7 @@ collections:
       # CVPage - English
       - label: "CV Page"
         name: "cv-en"
-        file: "content/cv-en.json"
+        file: "public/content/cv-en.json"
         fields:
           - label: "CV Sections"
             name: "sections"
@@ -247,7 +247,7 @@ collections:
       # ContactPage - English
       - label: "Contact Page"
         name: "contact-en"
-        file: "content/contact-en.json"
+        file: "public/content/contact-en.json"
         fields:
           - {label: "Email", name: "email", widget: "string"}
           - label: "Social Media"
