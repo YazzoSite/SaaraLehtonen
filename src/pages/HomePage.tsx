@@ -65,7 +65,7 @@ export const HomePage: React.FC = () => {
         minHeight: '100vh',
         overflow: 'hidden',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: isMobile ? 'flex-start' : 'center',
         justifyContent: 'center',
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
       }}
@@ -94,7 +94,7 @@ export const HomePage: React.FC = () => {
       {/* Content Container - All content overlaid */}
       <div
         style={{
-          marginTop: isMobile ? '5rem' : isTablet ? '6rem' : '8rem',
+          marginTop: isMobile ? '55vh' : isTablet ? '6rem' : '8rem',
           position: 'relative',
           zIndex: 10,
           textAlign: 'center',
