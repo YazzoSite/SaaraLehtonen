@@ -5,6 +5,7 @@ import { AboutPage } from './pages/AboutPage';
 import { MediaPage } from './pages/MediaPage';
 import { CVPage } from './pages/CVPage';
 import { ContactPage } from './pages/ContactPage';
+import { MenuColorTester } from './components/MenuColorTester';
 
 /**
  * Main site component for Saara Lehtonen
@@ -16,6 +17,7 @@ import { ContactPage } from './pages/ContactPage';
  * - #media -> MediaPage
  * - #cv -> CVPage
  * - #yhteystiedot -> ContactPage
+ * - #color-tester -> MenuColorTester (dev tool)
  */
 
 export const SaaraLehtonenSite: React.FC = () => {
@@ -44,6 +46,8 @@ export const SaaraLehtonenSite: React.FC = () => {
   // Render the appropriate page
   const renderPage = () => {
     switch (currentPage) {
+      case 'color-tester':
+        return <MenuColorTester />;
       case 'galleria':
         return <GalleryPage />;
       case 'tietoa':
