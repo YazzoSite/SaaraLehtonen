@@ -3,6 +3,7 @@ import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
 import { useTranslations } from '../hooks/useTranslations';
+import { ACTIVE_PALETTE } from '../styles/colorPalettes';
 
 interface MediaVideo {
   type: 'youtube' | 'vimeo' | 'direct';
@@ -34,6 +35,7 @@ interface MediaContent {
 
 export const MediaPage: React.FC = () => {
   const { isMobile } = useScreenSize();
+  const palette = ACTIVE_PALETTE;
   const data = useContentData<MediaContent>('media.json');
   const t = useTranslations();
 
@@ -76,6 +78,16 @@ export const MediaPage: React.FC = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center 42%',
             filter: 'brightness(0.5)',
+            zIndex: -3
+          }}
+        />
+
+        {/* White background layer */}
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(255, 255, 255, 0.5)',
             zIndex: -2
           }}
         />
@@ -85,7 +97,7 @@ export const MediaPage: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%)',
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.2) 100%)',
             zIndex: -1
           }}
         />
@@ -103,7 +115,7 @@ export const MediaPage: React.FC = () => {
           <div
             style={{
               textAlign: 'center',
-              color: '#FFFFFF',
+              color: palette.colors.textHeading,
               padding: '2rem',
               marginBottom: '3rem'
             }}
@@ -115,7 +127,7 @@ export const MediaPage: React.FC = () => {
                 letterSpacing: '0.1em',
                 margin: 0,
                 textTransform: 'uppercase',
-                textShadow: '2px 4px 8px rgba(0,0,0,0.6)'
+                textShadow: '1px 1px 2px rgba(255,255,255,0.3)'
               }}
             >
               {t.media.title}
@@ -146,7 +158,7 @@ export const MediaPage: React.FC = () => {
                     style={{
                       fontSize: '1.8rem',
                       fontWeight: 600,
-                      color: '#FFFFFF',
+                      color: palette.colors.textHeading,
                       marginBottom: '1.5rem',
                       textAlign: 'center'
                     }}
@@ -184,7 +196,7 @@ export const MediaPage: React.FC = () => {
                       </div>
                       <p
                         style={{
-                          color: '#FFFFFF',
+                          color: palette.colors.textPrimary,
                           textAlign: 'center',
                           marginTop: '1rem',
                           opacity: 0.9

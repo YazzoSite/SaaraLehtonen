@@ -60,6 +60,16 @@ export const AboutPage: React.FC = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center 42%',
             filter: 'brightness(0.5)',
+            zIndex: -3
+          }}
+        />
+
+        {/* White background layer */}
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(255, 255, 255, 0.5)',
             zIndex: -2
           }}
         />
@@ -69,7 +79,7 @@ export const AboutPage: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%)',
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.2) 100%)',
             zIndex: -1
           }}
         />
@@ -87,7 +97,7 @@ export const AboutPage: React.FC = () => {
           <div
             style={{
               textAlign: 'center',
-              color: '#FFFFFF',
+              color: palette.colors.textHeading,
               padding: '2rem',
               marginBottom: '3rem'
             }}
@@ -99,7 +109,7 @@ export const AboutPage: React.FC = () => {
                 letterSpacing: '0.1em',
                 margin: 0,
                 textTransform: 'uppercase',
-                textShadow: '2px 4px 8px rgba(0,0,0,0.6)'
+                textShadow: '1px 1px 2px rgba(255,255,255,0.3)'
               }}
             >
               {data.title}

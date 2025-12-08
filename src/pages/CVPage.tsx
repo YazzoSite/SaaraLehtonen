@@ -3,6 +3,7 @@ import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
 import { useTranslations } from '../hooks/useTranslations';
+import { ACTIVE_PALETTE } from '../styles/colorPalettes';
 
 interface CVSection {
   title: string;
@@ -23,6 +24,7 @@ interface CVContent {
 
 export const CVPage: React.FC = () => {
   const { isMobile } = useScreenSize();
+  const palette = ACTIVE_PALETTE;
   const data = useContentData<CVContent>('cv.json');
   const t = useTranslations();
 
@@ -65,6 +67,16 @@ export const CVPage: React.FC = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center 42%',
             filter: 'brightness(0.5)',
+            zIndex: -3
+          }}
+        />
+
+        {/* White background layer */}
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(255, 255, 255, 0.5)',
             zIndex: -2
           }}
         />
@@ -74,7 +86,7 @@ export const CVPage: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%)',
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.2) 100%)',
             zIndex: -1
           }}
         />
@@ -92,7 +104,7 @@ export const CVPage: React.FC = () => {
           <div
             style={{
               textAlign: 'center',
-              color: '#FFFFFF',
+              color: palette.colors.textHeading,
               padding: '2rem',
               marginBottom: '3rem'
             }}
@@ -104,7 +116,7 @@ export const CVPage: React.FC = () => {
                 letterSpacing: '0.1em',
                 margin: 0,
                 textTransform: 'uppercase',
-                textShadow: '2px 4px 8px rgba(0,0,0,0.6)'
+                textShadow: '1px 1px 2px rgba(255,255,255,0.3)'
               }}
             >
               {t.cv.title}
@@ -157,13 +169,13 @@ export const CVPage: React.FC = () => {
             <div
               style={{
                 textAlign: 'left',
-                color: '#FFFFFF',
+                color: palette.colors.textPrimary,
                 lineHeight: '1.8'
               }}
             >
               {data.sections.map((section, index) => (
                 <div key={index}>
-                  <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600 }}>
+                  <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600, color: palette.colors.textHeading }}>
                     {section.title}
                   </h2>
                   <p style={{ marginBottom: '2rem', opacity: 0.9 }}>
