@@ -153,7 +153,7 @@ export const PALETTES = {
 
 // CHANGE THIS to switch active palette
 // Options: 'driftwood' | 'graphite' | 'sapphire' | 'combined'
-export const ACTIVE_PALETTE_KEY: keyof typeof PALETTES = 'graphite'
+export const ACTIVE_PALETTE_KEY: keyof typeof PALETTES = 'driftwood'
 
 // Active palette (use this in components)
 export const ACTIVE_PALETTE = PALETTES[ACTIVE_PALETTE_KEY]

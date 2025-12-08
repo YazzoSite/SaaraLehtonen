@@ -106,7 +106,7 @@ export const ContactPage: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(255, 255, 255, 0.5)',
+            backgroundColor: 'rgba(255, 255, 255, 0.35)',
             zIndex: -2
           }}
         />
