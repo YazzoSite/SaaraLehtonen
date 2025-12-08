@@ -1,11 +1,11 @@
 {
   "sections": [
     {
-      "title": "Koulutus",
+      "title": "Education",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
     },
     {
-      "title": "Työkokemus",
+      "title": "Work experience",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
@@ -17,6 +17,7 @@
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
     }
   ],
-  "cvFile": "/cv.txt",
+  "showDownloadButton": true,
+  "cvFile": "/images/uploads/cv-en.txt",
   "downloadButtonText": "⬇ Lataa CV"
 }

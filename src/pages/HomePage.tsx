@@ -3,6 +3,7 @@ import { ACTIVE_PALETTE } from '../styles/colorPalettes';
 import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
+import { useTranslations } from '../hooks/useTranslations';
 
 interface HomeContent {
   name: string;
@@ -32,6 +33,7 @@ export const HomePage: React.FC = () => {
   const palette = ACTIVE_PALETTE;
   const { isMobile, isTablet } = useScreenSize();
   const data = useContentData<HomeContent>('home.json');
+  const t = useTranslations();
 
   if (!data) {
     return (
@@ -44,7 +46,7 @@ export const HomePage: React.FC = () => {
           minHeight: '100vh',
           color: '#FFFFFF'
         }}>
-          Loading...
+          {t.common.loading}
         </div>
       </>
     );
@@ -73,7 +75,7 @@ export const HomePage: React.FC = () => {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'url(/saara/IMG_8559.jpg)',
+          backgroundImage: 'url(/assets/hero-bg.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center 42%', // Slight adjustment to avoid header overlap
           filter: 'brightness(0.8)'

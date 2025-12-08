@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
+import { useTranslations } from '../hooks/useTranslations';
 
 interface CVSection {
   title: string;
@@ -10,6 +11,7 @@ interface CVSection {
 
 interface CVContent {
   sections: CVSection[];
+  showDownloadButton: boolean;
   cvFile: string;
   downloadButtonText: string;
 }
@@ -22,6 +24,7 @@ interface CVContent {
 export const CVPage: React.FC = () => {
   const { isMobile } = useScreenSize();
   const data = useContentData<CVContent>('cv.json');
+  const t = useTranslations();
 
   if (!data) {
     return (
@@ -34,7 +37,7 @@ export const CVPage: React.FC = () => {
           minHeight: '100vh',
           color: '#FFFFFF'
         }}>
-          Loading...
+          {t.common.loading}
         </div>
       </>
     );
@@ -58,7 +61,7 @@ export const CVPage: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundImage: 'url(/saara/IMG_8559.jpg)',
+            backgroundImage: 'url(/assets/hero-bg.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center 42%',
             filter: 'brightness(0.5)',
@@ -104,7 +107,7 @@ export const CVPage: React.FC = () => {
                 textShadow: '2px 4px 8px rgba(0,0,0,0.6)'
               }}
             >
-              CV
+              {t.cv.title}
             </h1>
           </div>
 
@@ -118,35 +121,37 @@ export const CVPage: React.FC = () => {
             }}
           >
             {/* Download Button */}
-            <a
-              href={data.cvFile}
-              download
-              style={{
-                display: 'inline-block',
-                marginBottom: '3rem',
-                padding: '1rem 2.5rem',
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                color: '#1a1a1a',
-                textDecoration: 'none',
-                borderRadius: '8px',
-                fontSize: '1.1rem',
-                fontWeight: 600,
-                transition: 'all 0.3s ease',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#FFFFFF';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
-              }}
-            >
-              {data.downloadButtonText}
-            </a>
+            {data.showDownloadButton && (
+              <a
+                href={data.cvFile}
+                download
+                style={{
+                  display: 'inline-block',
+                  marginBottom: '3rem',
+                  padding: '1rem 2.5rem',
+                  backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                  color: '#1a1a1a',
+                  textDecoration: 'none',
+                  borderRadius: '8px',
+                  fontSize: '1.1rem',
+                  fontWeight: 600,
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#FFFFFF';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+                }}
+              >
+                {data.downloadButtonText}
+              </a>
+            )}
 
             {/* CV Sections */}
             <div

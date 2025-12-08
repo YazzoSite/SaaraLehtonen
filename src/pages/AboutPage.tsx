@@ -3,6 +3,7 @@ import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { ACTIVE_PALETTE } from '../styles/colorPalettes';
 import { useContentData } from '../hooks/useContentData';
+import { useTranslations } from '../hooks/useTranslations';
 
 interface AboutContent {
   title: string;
@@ -18,6 +19,7 @@ export const AboutPage: React.FC = () => {
   const { isMobile } = useScreenSize();
   const palette = ACTIVE_PALETTE;
   const data = useContentData<AboutContent>('about.json');
+  const t = useTranslations();
 
   if (!data) {
     return (
@@ -30,7 +32,7 @@ export const AboutPage: React.FC = () => {
           minHeight: '100vh',
           color: '#FFFFFF'
         }}>
-          Loading...
+          {t.common.loading}
         </div>
       </>
     );
@@ -54,7 +56,7 @@ export const AboutPage: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundImage: 'url(/saara/IMG_8559.jpg)',
+            backgroundImage: 'url(/assets/hero-bg.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center 42%',
             filter: 'brightness(0.5)',

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { ACTIVE_PALETTE } from '../styles/colorPalettes';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { useTranslations } from '../hooks/useTranslations';
 
 /**
  * Responsive navigation header for Saara Lehtonen site
@@ -24,6 +26,7 @@ export const Navigation: React.FC<NavigationProps> = ({ showName = true }) => {
   const palette = ACTIVE_PALETTE;
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const t = useTranslations();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -57,12 +60,12 @@ export const Navigation: React.FC<NavigationProps> = ({ showName = true }) => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: 'Etusivu', href: '#home' },
-    { label: 'Saara', href: '#tietoa' },
-    { label: 'Galleria', href: '#galleria' },
-    { label: 'Media', href: '#media' },
-    { label: 'CV', href: '#cv' },
-    { label: 'Yhteystiedot', href: '#yhteystiedot' }
+    { label: t.nav.home, href: '#home' },
+    { label: t.nav.about, href: '#tietoa' },
+    { label: t.nav.gallery, href: '#galleria' },
+    { label: t.nav.media, href: '#media' },
+    { label: t.nav.cv, href: '#cv' },
+    { label: t.nav.contact, href: '#yhteystiedot' }
   ];
 
   return (
@@ -142,6 +145,9 @@ export const Navigation: React.FC<NavigationProps> = ({ showName = true }) => {
                 </a>
               </li>
             ))}
+            <li>
+              <LanguageSwitcher />
+            </li>
           </ul>
         )}
 
@@ -257,6 +263,9 @@ export const Navigation: React.FC<NavigationProps> = ({ showName = true }) => {
                 </a>
               </li>
             ))}
+            <li style={{ padding: '0.875rem 1.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <LanguageSwitcher />
+            </li>
           </ul>
         </div>
       )}

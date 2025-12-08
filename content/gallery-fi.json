@@ -1,0 +1,61 @@
+{
+  "introText": "Korkearesoluutioiset kuvat mediakäyttöön. Klikkaa kuvaa.",
+  "images": [
+    {
+      "src": "/images/web/IMG_8559.jpg",
+      "downloadSrc": "/images/downloads/IMG_8559.jpg",
+      "alt": "Saara Lehtonen professional headshot",
+      "photographer": "Jonna Härkänen",
+      "category": "Headshots"
+    },
+    {
+      "src": "/images/web/IMG_8410.jpg",
+      "downloadSrc": "/images/downloads/IMG_8410.jpg",
+      "alt": "Saara Lehtonen portrait",
+      "photographer": "Jonna Härkänen",
+      "category": "Headshots"
+    },
+    {
+      "src": "/images/web/IMG_8484.jpg",
+      "downloadSrc": "/images/downloads/IMG_8484.jpg",
+      "alt": "Saara Lehtonen portrait",
+      "photographer": "Jonna Härkänen",
+      "category": "Headshots"
+    },
+    {
+      "src": "/images/web/IMG_8694.jpg",
+      "downloadSrc": "/images/downloads/IMG_8694.jpg",
+      "alt": "Saara Lehtonen portrait",
+      "photographer": "Jonna Härkänen",
+      "category": "Headshots"
+    },
+    {
+      "src": "/images/web/SaaraLehtonen2025©hennihyvarinen-2E1A5287fullsize.jpg",
+      "downloadSrc": "/images/downloads/SaaraLehtonen2025©hennihyvarinen-2E1A5287fullsize.jpg",
+      "alt": "Saara Lehtonen professional photo",
+      "photographer": "Henni Hyvärinen",
+      "category": "Promotional"
+    },
+    {
+      "src": "/images/web/SaaraLehtonen2025©hennihyvarinen-2E1A5086fullsize.jpg",
+      "downloadSrc": "/images/downloads/SaaraLehtonen2025©hennihyvarinen-2E1A5086fullsize.jpg",
+      "alt": "Saara Lehtonen professional photo",
+      "photographer": "Henni Hyvärinen",
+      "category": "Promotional"
+    },
+    {
+      "src": "/images/web/SaaraLehtonen2025©hennihyvarinen-2E1A5260fullsize.jpg",
+      "downloadSrc": "/images/downloads/SaaraLehtonen2025©hennihyvarinen-2E1A5260fullsize.jpg",
+      "alt": "Saara Lehtonen professional photo",
+      "photographer": "Henni Hyvärinen",
+      "category": "Promotional"
+    },
+    {
+      "src": "/images/web/SaaraLehtonen2025©hennihyvarinen-2E1A5386fullsize.jpg",
+      "downloadSrc": "/images/downloads/SaaraLehtonen2025©hennihyvarinen-2E1A5386fullsize.jpg",
+      "alt": "Saara Lehtonen professional photo",
+      "photographer": "Henni Hyvärinen",
+      "category": "Promotional"
+    }
+  ]
+}

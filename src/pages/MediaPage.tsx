@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
+import { useTranslations } from '../hooks/useTranslations';
 
 interface MediaVideo {
   type: 'youtube' | 'vimeo' | 'direct';
@@ -34,6 +35,7 @@ interface MediaContent {
 export const MediaPage: React.FC = () => {
   const { isMobile } = useScreenSize();
   const data = useContentData<MediaContent>('media.json');
+  const t = useTranslations();
 
   if (!data) {
     return (
@@ -46,7 +48,7 @@ export const MediaPage: React.FC = () => {
           minHeight: '100vh',
           color: '#FFFFFF'
         }}>
-          Loading...
+          {t.common.loading}
         </div>
       </>
     );
@@ -70,7 +72,7 @@ export const MediaPage: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundImage: 'url(/saara/IMG_8559.jpg)',
+            backgroundImage: 'url(/assets/hero-bg.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center 42%',
             filter: 'brightness(0.5)',
@@ -116,7 +118,7 @@ export const MediaPage: React.FC = () => {
                 textShadow: '2px 4px 8px rgba(0,0,0,0.6)'
               }}
             >
-              Media
+              {t.media.title}
             </h1>
           </div>
 

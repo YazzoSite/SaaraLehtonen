@@ -3,6 +3,7 @@ import { ACTIVE_PALETTE } from '../styles/colorPalettes';
 import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
+import { useTranslations } from '../hooks/useTranslations';
 
 /**
  * GalleryPage for Saara Lehtonen
@@ -33,6 +34,7 @@ export const GalleryPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const data = useContentData<GalleryContent>('gallery.json');
+  const t = useTranslations();
 
   if (!data) {
     return (
@@ -45,7 +47,7 @@ export const GalleryPage: React.FC = () => {
           minHeight: '100vh',
           color: '#FFFFFF'
         }}>
-          Loading...
+          {t.common.loading}
         </div>
       </>
     );
@@ -80,7 +82,7 @@ export const GalleryPage: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundImage: 'url(/saara/IMG_8559.jpg)',
+            backgroundImage: 'url(/assets/hero-bg.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center 42%',
             filter: 'brightness(0.5)',
@@ -136,7 +138,7 @@ export const GalleryPage: React.FC = () => {
                 textShadow: '1px 1px 2px rgba(255,255,255,0.3)'
               }}
             >
-              Galleria
+              {t.gallery.title}
             </h1>
           </div>
 

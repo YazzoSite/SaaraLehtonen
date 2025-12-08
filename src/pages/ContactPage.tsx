@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
+import { useTranslations } from '../hooks/useTranslations';
 
 interface SocialMedia {
   platform: 'facebook' | 'instagram' | 'youtube';
@@ -53,6 +54,7 @@ const getSocialIcon = (platform: string) => {
 export const ContactPage: React.FC = () => {
   const { isMobile } = useScreenSize();
   const data = useContentData<ContactContent>('contact.json');
+  const t = useTranslations();
 
   if (!data) {
     return (
@@ -65,7 +67,7 @@ export const ContactPage: React.FC = () => {
           minHeight: '100vh',
           color: '#FFFFFF'
         }}>
-          Loading...
+          {t.common.loading}
         </div>
       </>
     );
@@ -89,7 +91,7 @@ export const ContactPage: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundImage: 'url(/saara/IMG_8559.jpg)',
+            backgroundImage: 'url(/assets/hero-bg.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center 42%',
             filter: 'brightness(0.5)',
@@ -135,7 +137,7 @@ export const ContactPage: React.FC = () => {
                 textShadow: '2px 4px 8px rgba(0,0,0,0.6)'
               }}
             >
-              Yhteystiedot
+              {t.contact.title}
             </h1>
           </div>
 
@@ -158,7 +160,7 @@ export const ContactPage: React.FC = () => {
                   fontWeight: 500
                 }}
               >
-                Yhteydenotot:
+                {t.contact.contactLabel}
               </p>
               <a
                 href={`mailto:${data.email}`}

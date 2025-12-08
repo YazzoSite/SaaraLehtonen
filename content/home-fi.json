@@ -1,6 +1,6 @@
 {
-  "showButton1": false,
-  "showButton2": false,
+  "showButton1": true,
+  "showButton2": true,
   "ctaButton1Link": "#galleria",
   "ctaButton2Link": "#media",
   "name": "SAARA LEHTONEN",
