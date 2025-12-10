@@ -79,16 +79,29 @@ export const HomePage: React.FC = () => {
           backgroundSize: 'cover',
           backgroundPositionX: 'center',
           backgroundPositionY: isMobile ? '85%' : '42%',
-          filter: 'brightness(0.8)'
+          filter: isMobile ? 'brightness(1.2)' : 'brightness(1)'
         }}
       />
+
+      {/* White overlay for mobile to lighten background */}
+      {isMobile && (
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundColor: 'rgba(255, 255, 255, 0.3)'
+          }}
+        />
+      )}
 
       {/* Overlay gradient for text readability */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%)'
+          background: isMobile
+            ? 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%)'
+            : 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%)'
         }}
       />
 

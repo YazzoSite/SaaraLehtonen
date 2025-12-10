@@ -47,8 +47,8 @@ export const DRIFTWOOD_PALETTE: ColorPalette = {
     bgSecondary: '#CCCDC7',    // Driftwood gray sections
     bgAccent: '#E4A499',       // Light peachy pink highlights
 
-    textPrimary: '#5A322A',    // Dark brown main text
-    textHeading: '#5A322A',    // Dark brown headings
+    textPrimary: '#35627A',    // Dark brown main text
+    textHeading: '#2e566bff',    // Dark brown headings
     textMuted: '#718A9E',      // Dusty blue-gray secondary
 
     accentPrimary: '#BC7B6F',  // Dusty rose primary

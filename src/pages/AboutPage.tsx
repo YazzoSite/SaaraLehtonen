@@ -127,7 +127,7 @@ export const AboutPage: React.FC = () => {
             {/* Bio Text Box */}
             <div
               style={{
-                backgroundColor: palette.colors.bgSecondary,
+                backgroundColor: 'rgba(204, 205, 199, 0.7)',
                 borderRadius: '16px',
                 padding: isMobile ? '2rem 1.5rem' : '3rem 3.5rem',
                 boxShadow: '0 8px 24px rgba(0,0,0,0.1)',

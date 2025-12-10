@@ -16,12 +16,22 @@ import { useTranslations } from '../hooks/useTranslations';
  */
 
 interface GalleryImage {
-  src: string; // Web-optimized image for display
+  src?: string; // Web-optimized image for display (optional, auto-generated from downloadSrc)
   downloadSrc: string; // High-resolution original for download
   alt: string;
   photographer: string;
   category: 'Headshots' | 'Production' | 'Promotional';
 }
+
+/**
+ * Helper function to convert download image path to web-optimized path
+ * Converts: /images/downloads/IMG_0168.jpg -> /images/web/IMG_0168.webp
+ */
+const getWebImagePath = (downloadPath: string): string => {
+  return downloadPath
+    .replace('/images/downloads/', '/images/web/')
+    .replace(/\.(jpg|jpeg|png)$/i, '.webp');
+};
 
 interface GalleryContent {
   introText: string;
@@ -211,7 +221,7 @@ export const GalleryPage: React.FC = () => {
               }}
             >
               <img
-                src={image.src}
+                src={image.src || getWebImagePath(image.downloadSrc)}
                 alt={image.alt}
                 style={{
                   width: '100%',
@@ -303,7 +313,7 @@ export const GalleryPage: React.FC = () => {
             }}
           >
             <img
-              src={selectedImage.src}
+              src={selectedImage.src || getWebImagePath(selectedImage.downloadSrc)}
               alt={selectedImage.alt}
               style={{
                 maxWidth: '100%',

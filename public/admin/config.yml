@@ -8,8 +8,8 @@ local_backend: true
 # Enable editorial workflow (draft/review/publish)
 publish_mode: editorial_workflow
 
-media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
+media_folder: "public/images/downloads"
+public_folder: "/images/downloads"
 
 collections:
   # FINNISH CONTENT
@@ -71,7 +71,6 @@ collections:
             name: "images"
             widget: "list"
             fields:
-              - {label: "Image (Web)", name: "src", widget: "image"}
               - {label: "High-Res Image", name: "downloadSrc", widget: "image"}
               - {label: "Alt Text", name: "alt", widget: "string"}
               - {label: "Photographer", name: "photographer", widget: "string"}
@@ -96,6 +95,14 @@ collections:
                   - {label: "Video Type", name: "type", widget: "select", options: ["youtube", "vimeo", "direct"]}
                   - {label: "Video URL", name: "url", widget: "string"}
                   - {label: "Title/Caption", name: "title", widget: "string"}
+                  - {label: "Description", name: "description", widget: "text", required: false}
+              - label: "Audio Files"
+                name: "audioFiles"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Audio File", name: "url", widget: "file"}
+                  - {label: "Title", name: "title", widget: "string"}
                   - {label: "Description", name: "description", widget: "text", required: false}
               - label: "External Links"
                 name: "externalLinks"
@@ -198,7 +205,6 @@ collections:
             name: "images"
             widget: "list"
             fields:
-              - {label: "Image (Web)", name: "src", widget: "image"}
               - {label: "High-Res Image", name: "downloadSrc", widget: "image"}
               - {label: "Alt Text", name: "alt", widget: "string"}
               - {label: "Photographer", name: "photographer", widget: "string"}
@@ -223,6 +229,14 @@ collections:
                   - {label: "Video Type", name: "type", widget: "select", options: ["youtube", "vimeo", "direct"]}
                   - {label: "Video URL", name: "url", widget: "string"}
                   - {label: "Title/Caption", name: "title", widget: "string"}
+                  - {label: "Description", name: "description", widget: "text", required: false}
+              - label: "Audio Files"
+                name: "audioFiles"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Audio File", name: "url", widget: "file"}
+                  - {label: "Title", name: "title", widget: "string"}
                   - {label: "Description", name: "description", widget: "text", required: false}
               - label: "External Links"
                 name: "externalLinks"

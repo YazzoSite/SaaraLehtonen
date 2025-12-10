@@ -17,6 +17,13 @@
       "type": "voice-samples",
       "title": "Ääninäytteet",
       "videos": [],
+      "audioFiles": [
+        {
+          "url": "/audio/Saara_Lehtonen_aaninayte_2024.mp3",
+          "title": "Saara Lehtonen - Ääninäyte 2024",
+          "description": ""
+        }
+      ],
       "externalLinks": [
         {
           "url": "https://vild.fi/spiikkerihaku?query=Saara+Lehtonen",

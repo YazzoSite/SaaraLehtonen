@@ -12,6 +12,12 @@ interface MediaVideo {
   description?: string;
 }
 
+interface MediaAudioFile {
+  url: string;
+  title: string;
+  description?: string;
+}
+
 interface MediaExternalLink {
   url: string;
   buttonText: string;
@@ -21,6 +27,7 @@ interface MediaSection {
   type: string;
   title: string;
   videos?: MediaVideo[];
+  audioFiles?: MediaAudioFile[];
   externalLinks?: MediaExternalLink[];
 }
 
@@ -146,9 +153,10 @@ export const MediaPage: React.FC = () => {
             {data.sections.map((section, sectionIndex) => {
               // Skip sections with no content
               const hasVideos = section.videos && section.videos.length > 0;
+              const hasAudio = section.audioFiles && section.audioFiles.length > 0;
               const hasLinks = section.externalLinks && section.externalLinks.length > 0;
 
-              if (!hasVideos && !hasLinks) {
+              if (!hasVideos && !hasAudio && !hasLinks) {
                 return null;
               }
 
@@ -204,6 +212,50 @@ export const MediaPage: React.FC = () => {
                       >
                         {video.title}
                       </p>
+                    </div>
+                  ))}
+
+                  {/* Render Audio Files */}
+                  {hasAudio && section.audioFiles!.map((audio, audioIndex) => (
+                    <div key={audioIndex} style={{ marginBottom: '2rem' }}>
+                      <p
+                        style={{
+                          color: palette.colors.textPrimary,
+                          textAlign: 'center',
+                          marginBottom: '1rem',
+                          fontSize: '1.1rem',
+                          fontWeight: 600
+                        }}
+                      >
+                        {audio.title}
+                      </p>
+                      <audio
+                        controls
+                        style={{
+                          width: '100%',
+                          maxWidth: '600px',
+                          display: 'block',
+                          margin: '0 auto',
+                          borderRadius: '8px',
+                          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                          boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+                        }}
+                      >
+                        <source src={audio.url} type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                      </audio>
+                      {audio.description && (
+                        <p
+                          style={{
+                            color: palette.colors.textMuted,
+                            textAlign: 'center',
+                            marginTop: '0.5rem',
+                            fontSize: '0.9rem'
+                          }}
+                        >
+                          {audio.description}
+                        </p>
+                      )}
                     </div>
                   ))}
 

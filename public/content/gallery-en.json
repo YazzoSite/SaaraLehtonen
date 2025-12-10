@@ -56,6 +56,20 @@
       "alt": "Saara Lehtonen professional photo",
       "photographer": "Henni Hyvärinen",
       "category": "Promotional"
+    },
+    {
+      "src": "/images/web/IMG_0168.webp",
+      "downloadSrc": "/images/downloads/IMG_0168.jpg",
+      "alt": "Saara Lehtonen portrait",
+      "photographer": "Photographer name",
+      "category": "Headshots"
+    },
+    {
+      "src": "/images/web/IMG_8012-Edit-3-2.webp",
+      "downloadSrc": "/images/downloads/IMG_8012-Edit-3-2.jpg",
+      "alt": "Saara Lehtonen portrait",
+      "photographer": "Photographer name",
+      "category": "Headshots"
     }
   ]
 }

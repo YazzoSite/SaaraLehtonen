@@ -15,12 +15,19 @@
     },
     {
       "type": "voice-samples",
-      "title": "Voice-samples",
+      "title": "Voice Samples",
       "videos": [],
+      "audioFiles": [
+        {
+          "url": "/audio/Saara_Lehtonen_aaninayte_2024.mp3",
+          "title": "Saara Lehtonen - Voice Sample 2024",
+          "description": ""
+        }
+      ],
       "externalLinks": [
         {
           "url": "https://vild.fi/spiikkerihaku?query=Saara+Lehtonen",
-          "buttonText": "Kuuntele ääninäytteet Vild.fi"
+          "buttonText": "Listen to more voice samples at Vild.fi"
         }
       ]
     },
