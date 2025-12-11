@@ -86,7 +86,7 @@ export const HomePage: React.FC = () => {
           backgroundSize: 'cover',
           backgroundPositionX: 'center',
           backgroundPositionY: isMobile ? '85%' : '42%',
-          filter: isMobile ? 'brightness(1.2)' : 'brightness(1)'
+          filter: isMobile ? 'brightness(1)' : 'brightness(1)'
         }}
       />
 
@@ -131,7 +131,7 @@ export const HomePage: React.FC = () => {
             fontSize: 'clamp(2.5rem, 8vw, 5rem)',
             fontWeight: 300,
             letterSpacing: '0.15em',
-            margin: '0 0 0 0',
+            margin: '0 0 1.5rem 0',
             textTransform: 'uppercase',
             textShadow: '2px 4px 8px rgba(0,0,0,0.6)',
             fontFamily: '"Helvetica Neue", Arial, sans-serif'
