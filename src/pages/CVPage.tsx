@@ -4,6 +4,7 @@ import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
 import { useTranslations } from '../hooks/useTranslations';
 import { ACTIVE_PALETTE } from '../styles/colorPalettes';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 interface CVSection {
   title: string;
@@ -27,6 +28,12 @@ export const CVPage: React.FC = () => {
   const palette = ACTIVE_PALETTE;
   const data = useContentData<CVContent>('cv.json');
   const t = useTranslations();
+
+  // Set page metadata for SEO
+  usePageMeta({
+    title: t.seo.cv.title,
+    description: t.seo.cv.description
+  });
 
   if (!data) {
     return (

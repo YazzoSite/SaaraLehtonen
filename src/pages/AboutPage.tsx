@@ -4,6 +4,7 @@ import { useScreenSize } from '../hooks/useScreenSize';
 import { ACTIVE_PALETTE } from '../styles/colorPalettes';
 import { useContentData } from '../hooks/useContentData';
 import { useTranslations } from '../hooks/useTranslations';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 interface AboutContent {
   title: string;
@@ -20,6 +21,12 @@ export const AboutPage: React.FC = () => {
   const palette = ACTIVE_PALETTE;
   const data = useContentData<AboutContent>('about.json');
   const t = useTranslations();
+
+  // Set page metadata for SEO
+  usePageMeta({
+    title: t.seo.about.title,
+    description: t.seo.about.description
+  });
 
   if (!data) {
     return (

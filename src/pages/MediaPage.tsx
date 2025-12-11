@@ -4,6 +4,7 @@ import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
 import { useTranslations } from '../hooks/useTranslations';
 import { ACTIVE_PALETTE } from '../styles/colorPalettes';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 interface MediaVideo {
   type: 'youtube' | 'vimeo' | 'direct';
@@ -45,6 +46,12 @@ export const MediaPage: React.FC = () => {
   const palette = ACTIVE_PALETTE;
   const data = useContentData<MediaContent>('media.json');
   const t = useTranslations();
+
+  // Set page metadata for SEO
+  usePageMeta({
+    title: t.seo.media.title,
+    description: t.seo.media.description
+  });
 
   if (!data) {
     return (

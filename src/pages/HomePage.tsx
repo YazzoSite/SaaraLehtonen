@@ -4,6 +4,7 @@ import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
 import { useTranslations } from '../hooks/useTranslations';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 interface HomeContent {
   name: string;
@@ -34,6 +35,12 @@ export const HomePage: React.FC = () => {
   const { isMobile, isTablet } = useScreenSize();
   const data = useContentData<HomeContent>('home.json');
   const t = useTranslations();
+
+  // Set page metadata for SEO
+  usePageMeta({
+    title: t.seo.home.title,
+    description: t.seo.home.description
+  });
 
   if (!data) {
     return (

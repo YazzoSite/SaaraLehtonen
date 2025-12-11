@@ -4,6 +4,7 @@ import { Navigation } from '../components/Navigation';
 import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
 import { useTranslations } from '../hooks/useTranslations';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 /**
  * GalleryPage for Saara Lehtonen
@@ -45,6 +46,12 @@ export const GalleryPage: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const data = useContentData<GalleryContent>('gallery.json');
   const t = useTranslations();
+
+  // Set page metadata for SEO
+  usePageMeta({
+    title: t.seo.gallery.title,
+    description: t.seo.gallery.description
+  });
 
   if (!data) {
     return (

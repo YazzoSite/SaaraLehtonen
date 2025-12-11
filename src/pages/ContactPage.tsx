@@ -4,6 +4,7 @@ import { useScreenSize } from '../hooks/useScreenSize';
 import { useContentData } from '../hooks/useContentData';
 import { useTranslations } from '../hooks/useTranslations';
 import { ACTIVE_PALETTE } from '../styles/colorPalettes';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 interface SocialMedia {
   platform: 'facebook' | 'instagram' | 'youtube';
@@ -57,6 +58,12 @@ export const ContactPage: React.FC = () => {
   const palette = ACTIVE_PALETTE;
   const data = useContentData<ContactContent>('contact.json');
   const t = useTranslations();
+
+  // Set page metadata for SEO
+  usePageMeta({
+    title: t.seo.contact.title,
+    description: t.seo.contact.description
+  });
 
   if (!data) {
     return (
