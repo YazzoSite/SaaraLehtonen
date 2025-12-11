@@ -11,16 +11,33 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Get saved language from localStorage or default to Finnish
+  // Get language from URL parameter first, then localStorage, or default to Finnish
   const [language, setLanguageState] = useState<Language>(() => {
+    // Check URL parameter first
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    if (langParam === 'en' || langParam === 'fi') {
+      return langParam;
+    }
+    // Fall back to localStorage
     const saved = localStorage.getItem('language');
     return (saved === 'fi' || saved === 'en') ? saved : 'fi';
   });
 
-  // Save language to localStorage when it changes
+  // Save language to localStorage and update URL when it changes
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem('language', lang);
+
+    // Update URL parameter
+    const url = new URL(window.location.href);
+    if (lang === 'en') {
+      url.searchParams.set('lang', 'en');
+    } else {
+      // Finnish is default, remove parameter
+      url.searchParams.delete('lang');
+    }
+    window.history.pushState({}, '', url);
   };
 
   return (
