@@ -33,16 +33,17 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://saaralehtonen.com/" />
 
-    <!-- JSON-LD Structured Data for Person/Actor -->
+    <!-- JSON-LD Structured Data for PerformingArtist -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
+      "@type": "PerformingArtist",
       "name": "Saara Lehtonen",
       "jobTitle": ["Näyttelijä", "Laulaja", "Ääninäyttelijä"],
       "description": "Suomalainen näyttelijä, laulaja ja ääninäyttelijä",
       "url": "https://saaralehtonen.com",
       "image": "https://saaralehtonen.com/og-image.jpg",
+      "genre": ["Theater", "Voice Acting", "Musical Performance"],
       "nationality": {
         "@type": "Country",
         "name": "Finland"
@@ -78,6 +79,21 @@
         "https://www.instagram.com/saaralehtonen",
         "https://vild.fi/spiikkerihaku?query=Saara+Lehtonen"
       ]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data for Image Gallery -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "Saara Lehtonen - Professional Gallery",
+      "description": "Professional photos of Finnish actress, singer and voice actress Saara Lehtonen from theatre, television and other productions",
+      "url": "https://saaralehtonen.com/#galleria",
+      "author": {
+        "@type": "PerformingArtist",
+        "name": "Saara Lehtonen"
+      }
     }
     </script>
   </head>
