@@ -2,22 +2,22 @@
   "sections": [
     {
       "title": "Education",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+      "content": "2019 Puppet theatre and musical theatre specializing program (Novia University of applied sciences / Turku University of applied sciences)\n\n2006 Muusikko AMK, Lahti University of applied sciences (musical theatre)\n\n1999-2000 Musical theatre program, Varsinais-Suomi folk high school\n\n1999 High school graduate, Mänttä High School"
     },
     {
       "title": "Work experience",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "content": "Musical artist since 2002. Dubbing cartoons and being a voice artist since 2004. Voice director since 2020."
     },
     {
       "title": "Taidot",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "content": "Acting, singing, playing the violin, dancing\n\nFinnish, English, Swedish"
     },
     {
-      "title": "Saavutukset",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+      "title": "Significant roles",
+      "content": "Fru Brill, Fru Corry (Mary Poppins, Svenska Theatre) 2020\n\nLouhi (Kalevala, Åbo Svenska Theatre) 2019\n\nEster / violinist (Ingvar! En musikalisk Möbelsaga, Wasa Theatre) 2017\n\nÉponine (Les Misérables, Tampere Theatre) 2013\n\nGeorgie Bugatinsky (Full Monty, Samppalinna Summer Theatre) 2012\n\nLinda (Blood Brothers, Tampere Theatre) 2012"
     }
   ],
   "showDownloadButton": true,
-  "cvFile": "/images/uploads/cv-en.txt",
-  "downloadButtonText": "⬇ Lataa CV"
+  "cvFile": "/images/downloads/pitkä-cv-2025.pdf",
+  "downloadButtonText": "⬇ Download CV"
 }
