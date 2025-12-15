@@ -2,22 +2,22 @@
   "sections": [
     {
       "title": "Koulutus",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+      "content": "2019 Nukketeatterin ja musiikkiteatterin erikoistumiskoulutus (Novia Amk / Turun Amk) \t\t\t\t\t\t\t\n\n2006 Muusikko AMK, Lahden Ammattikorkeakoulu (musiikkiteatterin suuntautumisvaihtoehto)\t\t\t\t\n\n1999-2000 Musiikkiteatterilinja, Varsinais-Suomen kansanopisto\t\t\t\n\n1999 Ylioppilas, Mäntän Lukio"
     },
     {
       "title": "Työkokemus",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "content": "Musikaaliartistina vuodesta 2002 alkaen.\n\nDubbauksia ja muita äänitöitä vuodesta 2004 alkaen\n\nDubbausohjauksia vuodesta 2020 alkaen"
     },
     {
       "title": "Taidot",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "content": "Näyttelijäntyö, laulu, viulunsoitto, tanssi\n\nSuomi, Englanti, Ruotsi"
     },
     {
-      "title": "Saavutukset",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+      "title": "Tärkeimmät roolit",
+      "content": "Fru Brill, Fru Corry (Mary Poppins, Svenska Teater) 2020\n\nLouhi (Kalevala, Åbo Svenska Teater) 2019\n\nEster / viulisti (Ingvar! En musikalisk Möbelsaga) Wasa Teater 2017\n\nÉponine (Les Misérables, Tampereen Teatteri) 2013\n\nGeorgie Bugatinsky (Housut pois, Samppalinnan kesäteatteri) 2012\n\nLinda (Veriveljet, Tampereen Teatteri) 2012"
     }
   ],
   "showDownloadButton": true,
-  "cvFile": "/cv/cv-fi.txt",
+  "cvFile": "/images/downloads/pitkä-cv-2025.pdf",
   "downloadButtonText": "⬇ Lataa CV"
 }
