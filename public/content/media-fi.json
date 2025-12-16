@@ -41,6 +41,16 @@
           "buttonText": "Voice of Finland 2017"
         }
       ]
+    },
+    {
+      "type": "Music",
+      "title": "Musiikki",
+      "externalLinks": [
+        {
+          "url": "https://open.spotify.com/album/1R9J1zPTyZ6ZebLLlN76VB?si=Jd7iHrGKSbO41SCW3rk_YQ",
+          "buttonText": "Pieni voimalaulu"
+        }
+      ]
     }
   ]
 }
