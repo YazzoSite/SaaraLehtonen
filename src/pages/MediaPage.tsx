@@ -53,6 +53,26 @@ export const MediaPage: React.FC = () => {
     description: t.seo.media.description
   });
 
+  /**
+   * Converts video URLs to privacy-enhanced versions for GDPR compliance
+   * - YouTube: Changes youtube.com to youtube-nocookie.com (no cookies until video plays)
+   * - Vimeo: Adds ?dnt=1 parameter (Do Not Track mode)
+   */
+  const makeVideoPrivacyFriendly = (url: string): string => {
+    // YouTube: convert to youtube-nocookie.com
+    if (url.includes('youtube.com')) {
+      return url.replace('youtube.com', 'youtube-nocookie.com');
+    }
+
+    // Vimeo: add ?dnt=1 if not present
+    if (url.includes('vimeo.com') && !url.includes('dnt=1')) {
+      return url.includes('?') ? `${url}&dnt=1` : `${url}?dnt=1`;
+    }
+
+    // Return original URL if already privacy-enhanced or unknown platform
+    return url;
+  };
+
   if (!data) {
     return (
       <>
@@ -195,7 +215,7 @@ export const MediaPage: React.FC = () => {
                         }}
                       >
                         <iframe
-                          src={video.url}
+                          src={makeVideoPrivacyFriendly(video.url)}
                           title={video.title}
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
