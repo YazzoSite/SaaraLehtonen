@@ -35,25 +35,25 @@
 ## 🔜 To Do Before Launch
 
 ### 1. Open Graph Image
-- [ ] Create OG image (1200x630px)
-- [ ] Professional headshot with name overlay
-- [ ] Save as `/public/og-image.jpg`
-- [ ] Test with Facebook Debugger
+- [x] Create OG image (1200x630px) ✅
+- [x] Professional headshot with name overlay ✅
+- [x] Save as `/public/og-image.jpg` ✅
+- [x] Test with Facebook Debugger ✅
 
 ### 2. Favicon
-- [ ] Create proper favicon.ico (32x32px)
-- [ ] Create apple-touch-icon.png (180x180px)
-- [ ] Replace default vite.svg
+- [ ] Create proper favicon.ico (32x32px) - SKIPPED
+- [ ] Create apple-touch-icon.png (180x180px) - SKIPPED
+- [ ] Replace default vite.svg - SKIPPED
 
 ### 3. Content SEO
 - [x] Ensure H1 tag with "Saara Lehtonen" on home page ✅
-- [ ] Proper heading hierarchy (H1 → H2 → H3)
-- [ ] Alt text for ALL images
-- [ ] Descriptive link text (avoid "click here")
+- [x] Proper heading hierarchy (H1 → H2 → H3) ✅
+- [x] Alt text for ALL images ✅
+- [x] Descriptive link text (avoid "click here") ✅
 
 ### 4. Performance
-- [ ] Optimize all images (WebP format)
-- [ ] Lazy loading for images
+- [x] Optimize all images (WebP format) ✅
+- [x] Lazy loading for images ✅ (React components handle this)
 - [x] Minify CSS/JS (Vite does this automatically) ✅
 - [x] Test page speed with Google PageSpeed Insights ✅ (2025-12-17: 88 Performance, 100 Accessibility/Best Practices/SEO)
 
@@ -86,7 +86,7 @@
 - [x] Submit to Google Search Console ✅
 - [x] Submit sitemap to Google Search Console ✅ (2025-12-17)
 - [x] Request indexing for key pages ✅ (2025-12-17)
-- [ ] Submit to Bing Webmaster Tools
+- [ ] Submit to Bing Webmaster Tools - SKIPPED (optional)
 - [x] Test all Open Graph tags (Facebook Debugger) ✅ (2025-12-17 - fb:app_id optional, skipped)
 - [x] Verify structured data (Schema.org validator) ✅ (2025-12-17 - Person type valid)
 
