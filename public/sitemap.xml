@@ -3,7 +3,7 @@
   <!-- Home Page -->
   <url>
     <loc>https://saaralehtonen.com/</loc>
-    <lastmod>2025-12-07</lastmod>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,7 +11,7 @@
   <!-- About Page (when created) -->
   <url>
     <loc>https://saaralehtonen.com/#about</loc>
-    <lastmod>2025-12-07</lastmod>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -19,7 +19,7 @@
   <!-- Gallery Page (when created) -->
   <url>
     <loc>https://saaralehtonen.com/#gallery</loc>
-    <lastmod>2025-12-07</lastmod>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -27,7 +27,7 @@
   <!-- Media/Showreel Page (when created) -->
   <url>
     <loc>https://saaralehtonen.com/#media</loc>
-    <lastmod>2025-12-07</lastmod>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -35,7 +35,7 @@
   <!-- Contact Page (when created) -->
   <url>
     <loc>https://saaralehtonen.com/#contact</loc>
-    <lastmod>2025-12-07</lastmod>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
