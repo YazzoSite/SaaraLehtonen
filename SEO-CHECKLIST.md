@@ -46,7 +46,7 @@
 - [ ] Replace default vite.svg
 
 ### 3. Content SEO
-- [ ] Ensure H1 tag with "Saara Lehtonen" on home page
+- [x] Ensure H1 tag with "Saara Lehtonen" on home page ✅
 - [ ] Proper heading hierarchy (H1 → H2 → H3)
 - [ ] Alt text for ALL images
 - [ ] Descriptive link text (avoid "click here")
@@ -54,30 +54,41 @@
 ### 4. Performance
 - [ ] Optimize all images (WebP format)
 - [ ] Lazy loading for images
-- [ ] Minify CSS/JS (Vite does this automatically)
-- [ ] Test page speed with Google PageSpeed Insights
+- [x] Minify CSS/JS (Vite does this automatically) ✅
+- [x] Test page speed with Google PageSpeed Insights ✅ (2025-12-17: 88 Performance, 100 Accessibility/Best Practices/SEO)
 
 ### 5. Domain & Hosting
-- [ ] Set up custom domain (if Saara has one)
-- [ ] Configure HTTPS (Netlify does this automatically)
+- [x] Set up custom domain ✅ (saaralehtonen.com)
+- [x] Configure HTTPS ✅ (Netlify SSL active)
 - [ ] Set up 301 redirects (if needed)
-- [ ] Update sitemap.xml with final domain
+- [x] Update sitemap.xml with final domain ✅
 
-### 6. Search Console Setup
-- [ ] Add site to Google Search Console
-- [ ] Submit sitemap.xml to Google
-- [ ] Verify ownership via DNS or meta tag
-- [ ] Monitor crawl errors
+### 6. Google Search Console Setup & Indexing
+- [x] Add site to Google Search Console (Completed 2025-12-17)
+- [x] Verify ownership via HTML file (`googlee954baaa9e9c972d.html`)
+- [x] Submit sitemap.xml to Google ✅ (Completed 2025-12-17)
+  - Go to "Sitemaps" → Enter `sitemap.xml` → Submit
+- [x] Request indexing for homepage ✅ (Completed 2025-12-17)
+  - Go to "URL Inspection" → Enter `https://saaralehtonen.com` → Request Indexing
+- [ ] Monitor crawl errors and coverage
+- [ ] Set up email notifications for critical issues
+
+#### Verification Method Used:
+- **HTML File Upload:** `googlee954baaa9e9c972d.html` in public folder
+- **Status:** Verified ✅
+- **Date:** December 17, 2025
 
 ---
 
 ## 📋 Post-Launch SEO Tasks
 
 ### Week 1: Initial Setup
-- [ ] Submit to Google Search Console
+- [x] Submit to Google Search Console ✅
+- [x] Submit sitemap to Google Search Console ✅ (2025-12-17)
+- [x] Request indexing for key pages ✅ (2025-12-17)
 - [ ] Submit to Bing Webmaster Tools
-- [ ] Test all Open Graph tags (Facebook Debugger)
-- [ ] Verify structured data (Google Rich Results Test)
+- [x] Test all Open Graph tags (Facebook Debugger) ✅ (2025-12-17 - fb:app_id optional, skipped)
+- [x] Verify structured data (Schema.org validator) ✅ (2025-12-17 - Person type valid)
 
 ### Month 1: Content Optimization
 - [ ] Add more descriptive bio content
@@ -133,6 +144,94 @@
 
 ### Analytics (Optional)
 - **Google Analytics:** https://analytics.google.com/
+
+---
+
+## 🚀 Google Indexing Optimization Guide
+
+### How to Speed Up Google Re-Indexing
+
+When migrating to a new site or updating content, follow these steps to get Google to index the new version quickly:
+
+#### Step 1: Submit Sitemap (Most Important)
+1. Go to Google Search Console
+2. Navigate to "Sitemaps" in left menu
+3. Enter: `sitemap.xml`
+4. Click "Submit"
+5. **Result:** Google starts crawling within hours
+
+#### Step 2: Request Indexing for Key Pages (Priority Crawl)
+1. Go to "URL Inspection" in left menu
+2. Enter the full URL (e.g., `https://saaralehtonen.com`)
+3. Click "Test URL"
+4. Click "Request Indexing"
+5. **Result:** Priority crawl within 24-48 hours
+
+**Important URLs to request indexing for:**
+- `https://saaralehtonen.com` (homepage)
+- Other important pages as needed
+
+**Note:** You can only request indexing for a limited number of URLs per day (usually 10-20).
+
+#### Step 3: Manual Sitemap Ping (Optional)
+Visit this URL in your browser to manually ping Google:
+```
+https://www.google.com/ping?sitemap=https://saaralehtonen.com/sitemap.xml
+```
+
+#### Step 4: Remove Old Cached Pages (Optional)
+If old site content still appears in Google:
+1. Go to: https://www.google.com/webmasters/tools/removals
+2. Request removal of outdated URLs
+3. Wait for removal to process (24-48 hours)
+
+### Expected Timeline for Re-Indexing
+
+- ✅ **Sitemap submitted:** Crawling starts within 1-6 hours
+- ⏳ **Request indexing:** Priority crawl in 24-48 hours
+- ⏳ **Natural re-crawl:** 1-2 weeks without action
+- ⏳ **Full re-indexing:** 2-4 weeks for all pages
+- 🎯 **Old cache replaced:** 2-4 weeks for complete update
+
+### Monitoring Index Status
+
+In Google Search Console, monitor:
+1. **Coverage Report:** Shows which pages are indexed
+2. **Sitemaps Report:** Shows sitemap status and discovered URLs
+3. **Performance Report:** Shows search rankings and clicks
+4. **URL Inspection:** Check specific page index status
+
+### Sitemap Updates
+
+**When to update sitemap.xml:**
+- After adding new pages or content
+- When making significant content changes
+- Monthly as best practice
+
+**Current sitemap:**
+- Location: `/public/sitemap.xml`
+- Last updated: 2025-12-17
+- URLs included: 5 (home, about, gallery, media, contact)
+
+**Update process:**
+1. Edit `public/sitemap.xml`
+2. Update `<lastmod>` dates to current date
+3. Commit and push changes
+4. Re-submit to Google Search Console (optional, Google will discover automatically)
+
+### Common Issues & Solutions
+
+**Issue:** Google says "URL not found"
+- **Solution:** Make sure you selected the correct property in Search Console
+
+**Issue:** "Couldn't find your verification token"
+- **Solution:** Ensure verification file is in `/public/` folder and deployed
+
+**Issue:** Sitemap errors
+- **Solution:** Validate sitemap at https://www.xml-sitemaps.com/validate-xml-sitemap.html
+
+**Issue:** Pages not being indexed
+- **Solution:** Check robots.txt isn't blocking, ensure HTTPS is working
 
 ---
 
